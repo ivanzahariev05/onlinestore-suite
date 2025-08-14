@@ -1,21 +1,55 @@
-# Java / Gradle
-.gradle/
+# Build outputs
 build/
 out/
-!gradle/wrapper/gradle-wrapper.jar
-.gradle/
+target/
 **/build/
 **/out/
+**/target/
+
+# Gradle
+.gradle/
+**/.gradle/
+.gradle-cache/
+gradle-app.setting
+gradle-app.conf
+
+# Maven (in case some module uses it)
+.mvn/
+**/.mvn/
+pom.xml.versionsBackup
+release.properties
 
 # IDEs
 .idea/
 *.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
 .vscode/
+.history/
 
 # OS
 .DS_Store
 Thumbs.db
 
-# Docker
-**/.docker/
-**/.env
+# Logs & temp
+logs/
+*.log
+*.tmp
+*.swp
+
+# Local env / secrets (keep real secrets out of VCS)
+.env
+.env.*
+*.local.properties
+application-local.properties
+**/application-local.properties
+
+# Node artifacts (if any UI is added later)
+node_modules/
+dist/
+
+# Spring specific (optional)
+.spring/
