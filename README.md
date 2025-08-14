@@ -38,4 +38,4 @@ This repository contains two independent Spring Boot applications that work toge
      - `POST http://localhost:8081/api/v1/notifications/toggle?userId=<UUID>`
    - `onlinestore` will call `notification-svc` via Feign for notification features.
 
-## Project Structure
+
