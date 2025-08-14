@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Nutriboost</title>
+    <link rel="icon" type="image/png" th:href="@{/images/favicon.png}">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="register-container">
+    <h1>Register</h1>
+    <form class="form-container" th:action="@{/register}" th:method="POST" th:object="${registerRequest}" >
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" th:field="*{username}" placeholder="Enter your username" required>
+            <p th:if="${#fields.hasErrors('username')}" th:errors="*{username} " class="errors"></p>
+            <p class="alert-warning"  th:if="${usernameAlreadyExist != null}" th:text="${usernameAlreadyExist}"></p>
+
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" th:field="*{email}" placeholder="Enter your email" required>
+            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+            <p class="alert-warning" th:if="${emailAlreadyExist != null}" th:text="${emailAlreadyExist}"></p>
+
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" th:field="*{password}" placeholder="Enter your password" required>
+            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"  class="errors"></p>
+        </div>
+
+        <button type="submit">Register</button>
+        <p class="form-footer-text">Already have an account ? <a th:href="@{/login}">Sign in</a></p>
+    </form>
+</div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

@@ -1,0 +1,218 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #d4edc9, #b6e5a6, #9cd48b);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 0;
+}
+
+.top-right-buttons {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.top-right-buttons button {
+    background-color: #2b5e20;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.top-right-buttons button:hover {
+    background-color: #357a38;
+}
+
+/* Containers */
+.register-container,
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    width: 400px;
+}
+.register-container h1,
+.login-container h1 {
+    color: #2b5e20;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+
+.h1-index {
+    font-size: 5rem;
+    max-width: 500px;
+    text-align: center;
+    margin: 20px 0;
+}
+.h2-index {
+    font-size: 2rem;
+    max-width: 300px;
+    text-align: center;
+    margin: 10px 0;
+}
+
+
+.form-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+.form-group label {
+    font-size: 1rem;
+    color: #2b5e20;
+    margin-bottom: 5px;
+}
+.form-group input {
+    font-size: 1rem;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+}
+.form-container button {
+    background-color: #2b5e20;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.form-container button:hover {
+    background-color: #357a38;
+}
+
+
+.errors {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    font-size: 0.8rem;
+}
+.alert-warning{
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+
+.logo-image {
+    display: block;
+    margin: 0 auto 10px;
+    width: 200px;
+    height: auto;
+}
+
+
+.header .logo {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #2b5e20;
+    text-decoration: none;
+}
+.header .search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.header input[type="text"] {
+    font-size: 1rem;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.header button {
+    background-color: #2b5e20;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.header button:hover {
+    background-color: #357a38;
+}
+
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    margin: 20px 0 20px 220px;
+}
+.product-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.product-card h3 {
+    font-size: 1.2rem;
+    color: #2b5e20;
+    margin-bottom: 10px;
+}
+.product-card p {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+}
+.form-footer-text {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #555;
+    text-align: center;
+}
+.form-footer-text a {
+    color: #2b5e20;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.form-footer-text a:hover {
+    color: #72e304;
+}

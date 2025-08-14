@@ -1,0 +1,108 @@
+.sidebar {
+    position: fixed;
+    left: 15px;
+    top: 50px;
+    width: 320px;
+    height: 80vh;
+    background: rgba(43, 94, 32, 0.9);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.profile-picture {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+.profile-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 10px;
+}
+
+
+.details-section {
+    width: 100%;
+    padding: 10px 20px;
+    color: #fff;
+}
+.details-section div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.action-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    text-decoration: none;
+}
+
+.action-button button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #62a36b, #4e8d5b);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.action-button button:hover {
+    background: linear-gradient(135deg, #76c080, #5ca86d);
+    transform: scale(1.05);
+}
+.logout-button{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    text-decoration: none;
+}
+.logout-button button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #70050a, #6c0206);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.logout-button button:hover {
+    background: linear-gradient(135deg, #b50404, #b80505);
+    transform: scale(1.05);
+}

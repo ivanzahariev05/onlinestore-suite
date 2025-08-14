@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders - Nutriboost</title>
+    <link rel="icon" type="image/png" th:href="@{/images/favicon.png}">
+    <link rel="stylesheet" href="/css/orders.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+<div class="form-container">
+    <aside class="sidebar">
+        <div class="sidebar-section">
+            <div class="profile-header">
+                <img th:src="${#strings.isEmpty(user.imageUrl) ? 'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg' : user.imageUrl}"
+                     alt="Profile Picture" class="profile-picture" />
+                <h3 class="profile-name" th:text="${user.username}"></h3>
+            </div>
+            <div class="details-section">
+                <div class="profile-name">
+                    <strong>Name</strong>
+                    <span th:text="${#strings.isEmpty(user.firstName) ? 'Edit profile': user.firstName + ' ' +  user.lastName}"></span>
+                </div>
+                <div class="profile-email">
+                    <strong>Email</strong>
+                    <span th:text="${user.email}"></span>
+                </div>
+                <a th:href="@{/home}" class="action-button">
+                    <button><i class="fa-solid fa-house"></i> Home</button>
+                </a>
+                <a th:href="@{/edit/profile}" class="action-button">
+                    <button><i class="fa-solid fa-user-pen"></i> Edit Profile</button>
+                </a>
+                <a th:href="@{notifications}" class="action-button">
+                    <button><i class="fa-solid fa-bell"></i> Notifications</button>
+                </a>
+                <a th:href="@{/wallet}" class="action-button">
+                    <button><i class="fa-solid fa-wallet"></i> Wallet</button>
+                </a>
+                <a th:href="@{/orders}" class="action-button">
+                    <button><i class="fa-solid fa-box"></i> Orders</button>
+                </a>
+                <a th:if="${user.role.name=='ADMIN'}" th:href="@{/users}" class="action-button">
+                    <button><i class="fa-solid fa-users"></i> Users</button>
+                </a>
+                <a th:href="@{/logout}" class="logout-button">
+                    <button><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+                </a>
+            </div>
+        </div>
+    </aside>
+    <table class="styled-table" th:unless="${ #lists.isEmpty(orders)}">
+        <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Order Date</th>
+            <th>Total Price</th>
+            <th>Product</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="order : ${orders}">
+            <td th:text="${order.id}"></td>
+            <td th:text="${#temporals.format(order.orderDate, 'dd MMM YYYY HH:mm')}"></td>
+            <td th:text="${order.totalPrice}"></td>
+            <td th:text="${order.product.getName()}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table class="styled-table empty-table" th:if="${#lists.isEmpty(orders)}">
+        <thead>
+        <tr>
+            <th>No Orders Found</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>No orders have been placed yet.</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

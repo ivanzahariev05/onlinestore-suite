@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error page - Nutriboost</title>
+  <link rel="icon" type="image/png" th:href="@{/images/favicon.png}">
+  <link rel="stylesheet" href="/css/not-found.css">
+</head>
+<body class="error-page">
+<div class="error-container">
+  <h1>404</h1>
+  <p>Oops! The page you're looking for doesn't exist.</p>
+  <button onclick="goBack()">Go Back</button>
+</div>
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>
+</body>
+</html>

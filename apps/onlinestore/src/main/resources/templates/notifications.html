@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <title>Notifications - Nutriboost</title>
+    <link rel="stylesheet" href="/css/notifications.css">
+    <link rel="icon" type="image/png" th:href="@{/images/favicon.png}">
+    <link rel="stylesheet" href="/css/sidebar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<aside class="sidebar">
+    <div class="sidebar-section">
+        <div class="profile-header">
+            <img th:src="${#strings.isEmpty(user.imageUrl) ? 'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg' : user.imageUrl}"
+                 alt="Profile Picture" class="profile-picture"/>
+            <h3 class="profile-name" th:text="${user.username}"></h3>
+        </div>
+        <div class="details-section">
+            <div class="profile-name">
+                <strong>Name</strong>
+                <span th:text="${#strings.isEmpty(user.firstName) ? 'Edit profile': user.firstName + ' ' +  user.lastName}"></span>
+            </div>
+            <div class="profile-email">
+                <strong>Email</strong>
+                <span th:text="${user.email}"></span>
+            </div>
+            <a th:href="@{/home}" class="action-button">
+                <button><i class="fa-solid fa-house"></i> Home</button>
+            </a>
+            <a th:href="@{/edit/profile}" class="action-button">
+                <button><i class="fa-solid fa-user-pen"></i> Edit Profile</button>
+            </a>
+            <a th:href="@{/notifications}" class="action-button">
+                <button><i class="fa-solid fa-bell"></i> Notifications</button>
+            </a>
+            <a th:href="@{/wallet}" class="action-button">
+                <button><i class="fa-solid fa-wallet"></i> Wallet</button>
+            </a>
+            <a th:href="@{/orders}" class="action-button">
+                <button><i class="fa-solid fa-box"></i> Orders</button>
+            </a>
+            <a th:if="${user.role.name=='ADMIN'}" th:href="@{/users}" class="action-button">
+                <button><i class="fa-solid fa-users"></i> Users</button>
+            </a>
+            <a th:href="@{/logout}" class="logout-button">
+                <button><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+            </a>
+        </div>
+    </div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="content">
+    <h1>🔔 Notification Preferences</h1>
+    <p>Manage your notification preferences for Nutriboost.</p>
+
+    <div class="notification-settings">
+        <h3>Email Notifications</h3>
+        <p>You will receive updates, promotions, and special offers via email.</p>
+
+        <div class="toggle-container">
+            <span>Status: </span>
+            <span class="status" th:text="${notificationPreference.enabled ? 'Enabled ✅' : 'Disabled ❌'}"></span>
+
+            <label class="switch">
+                <input type="checkbox" th:checked="${notificationPreference.enabled}"
+                       onchange="toggleNotifications()">
+                <span class="slider round"></span>
+            </label>
+        </div>
+    </div>
+</main>
+
+<script>
+    function toggleNotifications() {
+        let csrfToken = document.querySelector('meta[name="_csrf"]').content;
+        let csrfHeader = document.querySelector('meta[name="_csrf_header"]').content;
+
+        fetch('/notifications/toggle', {
+            method: 'POST',
+            headers: {
+                [csrfHeader]: csrfToken,  // Добавя CSRF токен в хедърите
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                if (response.ok) {
+                    location.reload();
+                } else {
+                    alert('Failed to update notification settings.');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+</script>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

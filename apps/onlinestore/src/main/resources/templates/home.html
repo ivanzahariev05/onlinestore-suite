@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Nutriboost</title>
+  <link rel="icon" type="image/png" th:href="@{/images/favicon.png}">
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="/css/sidebar.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body class="home-page">
+<aside class="sidebar">
+  <div class="sidebar-section">
+    <div class="profile-header">
+      <img th:src="${#strings.isEmpty(user.imageUrl) ? 'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg' : user.imageUrl}"
+           alt="Profile Picture" class="profile-picture"/>
+      <h3 class="profile-name" th:text="${user.username}"></h3>
+    </div>
+    <div class="details-section">
+      <div class="profile-name">
+        <strong>Name</strong>
+        <span th:text="${#strings.isEmpty(user.firstName) ? 'Edit profile': user.firstName + ' ' +  user.lastName}"></span>
+      </div>
+      <div class="profile-email">
+        <strong>Email</strong>
+        <span th:text="${user.email}"></span>
+      </div>
+      <a th:href="@{/home}" class="action-button">
+        <button><i class="fa-solid fa-house"></i> Home</button>
+      </a>
+      <a th:href="@{/edit/profile}" class="action-button">
+        <button><i class="fa-solid fa-user-pen"></i> Edit Profile</button>
+      </a>
+      <a th:href="@{/notifications}" class="action-button">
+        <button><i class="fa-solid fa-bell"></i> Notifications</button>
+      </a>
+      <a th:href="@{/wallet}" class="action-button">
+        <button><i class="fa-solid fa-wallet"></i> Wallet</button>
+      </a>
+      <a th:href="@{/orders}" class="action-button">
+        <button><i class="fa-solid fa-box"></i> Orders</button>
+      </a>
+      <a th:if="${user.role.name=='ADMIN'}" th:href="@{/users}" class="action-button">
+        <button><i class="fa-solid fa-users"></i> Users</button>
+      </a>
+      <a th:href="@{/logout}" class="logout-button">
+        <button><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+      </a>
+    </div>
+  </div>
+</aside>
+
+<header class="header">
+  <div class="header-left">
+    <h1 class="logo">Nutriboost</h1>
+  </div>
+  <div class="header-right">
+    <select name="category"
+            th:onchange="|window.location.href='/products?productType=' + this.value|">
+      <option value="">Select category</option>
+      <option th:each="productType : ${productTypes}"
+              th:value="${productType}"
+              th:text="${#strings.capitalize(productType.name().replace('_', ' ').toLowerCase())}">
+      </option>
+    </select>
+  </div>
+</header>
+
+<main class="content-wrapper">
+
+
+  <section class="carousel-container">
+    <th:block th:if="${#lists.isEmpty(products)}">
+      <div class="empty-products-container">
+        <p class="no-products-message">No products available at the moment. Come back later</p>
+        <img src="/images/no-products-available.webp" alt="Empty product cart" class="cart-img">
+      </div>
+    </th:block>
+
+    <th:block th:unless="${#lists.isEmpty(products)}">
+      <button id="prev-btn">❮</button>
+      <div class="product-carousel">
+        <div class="product-wrapper">
+          <div class="product-card" th:each="product : ${products}">
+            <a th:href="@{'/products/' + ${product.id}}" class="product-link">
+              <img th:src="@{${product.imageUrl}}" alt="Product Image">
+              <h3 th:text="${product.name}">Product Name</h3>
+              <p class="original-price" th:text="'€' + ${product.price}"></p>
+            </a>
+          </div>
+        </div>
+      </div>
+      <button id="next-btn">❯</button>
+    </th:block>
+  </section>
+</main>
+
+
+<script>
+  function filterByCategory() {
+    let selectedCategory = document.getElementById("categoryDropdown").value;
+    window.location.href = selectedCategory ? '/home?category=' + selectedCategory : '/home';
+  }
+</script>
+<script src="/js/home.js"></script>
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

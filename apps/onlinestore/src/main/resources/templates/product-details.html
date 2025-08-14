@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:text="${product.name} + ' - Nutriboost'"></title>
+  <link rel="stylesheet" href="/css/product-details.css">
+  <link rel="icon" type="image/png" th:href="@{/images/favicon.png}">
+  <link rel="stylesheet" href="/css/sidebar.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+<aside class="sidebar">
+  <div class="sidebar-section">
+    <div class="profile-header">
+      <img th:src="${#strings.isEmpty(user.imageUrl) ? 'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg' : user.imageUrl}"
+           alt="Profile Picture" class="profile-picture" />
+      <h3 class="profile-name" th:text="${user.username}"></h3>
+    </div>
+    <div class="details-section">
+      <div class="profile-name">
+        <strong>Name</strong>
+        <span th:text="${#strings.isEmpty(user.firstName) ? 'Edit profile': user.firstName + ' ' +  user.lastName}"></span>
+      </div>
+      <div class="profile-email">
+        <strong>Email</strong>
+        <span th:text="${user.email}"></span>
+      </div>
+      <a th:href="@{/home}" class="action-button">
+        <button><i class="fa-solid fa-house"></i> Home</button>
+      </a>
+      <a th:href="@{/edit/profile}" class="action-button">
+        <button><i class="fa-solid fa-user-pen"></i> Edit Profile</button>
+      </a>
+      <a th:href="@{notifications}" class="action-button">
+        <button><i class="fa-solid fa-bell"></i> Notifications</button>
+      </a>
+      <a th:href="@{/wallet}" class="action-button">
+        <button><i class="fa-solid fa-wallet"></i> Wallet</button>
+      </a>
+      <a th:href="@{/orders}" class="action-button">
+        <button><i class="fa-solid fa-box"></i> Orders</button>
+      </a>
+      <a th:if="${user.role.name=='ADMIN'}" th:href="@{/users}" class="action-button">
+        <button><i class="fa-solid fa-users"></i> Users</button>
+      </a>
+      <a th:href="@{/logout}" class="logout-button">
+        <button><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+      </a>
+    </div>
+  </div>
+</aside>
+
+<div class="product-container">
+  <div class="product-image">
+    <img th:src="@{${product.imageUrl}}" alt="Product Image">
+  </div>
+  <div class="product-info">
+    <h1 th:text="${product.name}">Product Name</h1>
+    <p th:text="${product.description}">Product Description</p>
+    <p class="original-price" th:text="'€' + ${product.price}"></p>
+    <div class="product-actions">
+      <div th:if="${insufficientFunds}" class="error-message">
+        <p th:text="${insufficientFunds}"></p>
+      </div>
+      <form th:action="@{'/products/buy/' + ${product.id}}" method="POST">
+        <input type="hidden" name="productId" th:value="${product.id}" />
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" id="quantity" min="1" value="1" required />
+        <button type="submit"><i class="fa-solid fa-credit-cart"></i> Buy now</button>
+      </form>
+    </div>
+  </div>
+</div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

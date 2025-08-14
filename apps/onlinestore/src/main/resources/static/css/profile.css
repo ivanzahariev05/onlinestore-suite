@@ -1,0 +1,92 @@
+.edit-profile-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0.8px 6px 10px rgba(0, 0, 0, 0.15);
+    width: 400px;
+}
+
+.logo-image {
+    display: block;
+    margin: 0 auto 10px;
+    width: 200px;
+    height: auto;
+}
+
+
+.title{
+    font-size: 3rem;
+    font-family: 'Rubik', sans-serif;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #d4edc9, #b6e5a6, #9cd48b);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 0;
+}
+
+.form-group {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+button {
+    background-color: #2b5e20;
+    position: static;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 400px;
+}
+
+.button:hover{
+    background-color: #b8f3bc;
+
+}
+.side-button-tapped{
+    color: #00ffff;
+}
+.errors {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+footer{
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+}

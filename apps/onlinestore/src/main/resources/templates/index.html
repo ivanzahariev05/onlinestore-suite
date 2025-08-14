@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index - Nutriboost</title>
+    <link rel="icon" type="image/png" th:href="@{/images/favicon.png}">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="top-right-buttons">
+    <a th:href="@{/login}">
+        <button>Login</button>
+    </a>
+    <a th:href="@{/register}">
+        <button>Register</button>
+    </a>
+
+</div>
+<img src="/images/logo.png" alt="Healthy Logo" class="logo-image">
+<h1 class="h1-index">Nutriboost</h1>
+<h2 class="h2-index">Your health store</h2>
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

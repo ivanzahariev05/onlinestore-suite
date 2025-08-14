@@ -1,0 +1,139 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #d4edc9, #b6e5a6, #9cd48b);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin: 0;
+}
+
+.wallet-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    gap: 20px;
+    margin-top: 100px;
+    margin-left: 100px;
+}
+
+.wallet-container {
+    flex: 1;
+    max-width: 300px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.wallet-header h1 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #2d602d;
+}
+
+.balance-amount {
+    font-size: 20px;
+    font-weight: bold;
+    background: #e0ebd5;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+.wallet-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.wallet-actions form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.wallet-actions input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.add-funds-btn, .send-funds-btn {
+    background: #2d602d;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.add-funds-btn:hover, .send-funds-btn:hover {
+    background: #245024;
+}
+
+.transactions-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.styled-table {
+    width: 100%;
+    min-width: 600px;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.styled-table th, .styled-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.styled-table th {
+    background: #2d602d;
+    color: white;
+}
+
+.no-transactions-table {
+    margin-top: 10px;
+    width: 100%;
+    min-width: 600px;
+    text-align: center;
+    background: #2d602d;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+.error-message {
+    background-color: #ffcccc;
+    color: #b30000;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #b30000;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+}
