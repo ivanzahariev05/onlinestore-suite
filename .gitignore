@@ -1,0 +1,21 @@
+# Java / Gradle
+.gradle/
+build/
+out/
+!gradle/wrapper/gradle-wrapper.jar
+.gradle/
+**/build/
+**/out/
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+**/.docker/
+**/.env
